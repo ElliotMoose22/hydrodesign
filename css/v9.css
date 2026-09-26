@@ -1,0 +1,398 @@
+/* Variant 9 — "Cyanotype".
+   Poster grid in navy / light blue. Titles in Emigre Modulator,
+   everything else in Futura 100 from the Typekit kit. Loaded after v6.css. */
+
+:root {
+  --black: #08222f;
+  --white: #ffffff;
+  --off: #dcecf4;
+  --red: #6cd0ee;
+  --display: "modulator-vf", sans-serif;
+  --font: "futura-100", "futura-100-book", Futura, "Futura Std", sans-serif;
+  --ink-blue: #0b6e91;
+}
+
+/* Body, UI, and running text: Futura. Kit only ships 400 and 700. */
+html,
+body,
+button,
+p,
+.cap,
+.ghost,
+.arrow,
+.top__nav a,
+.issue,
+.issue b,
+.crew .n,
+.crew .r,
+.crew .y,
+.panel h3,
+.panel__meta,
+.panel p,
+.thanks,
+.foot,
+.cgrid,
+.cgrid h3,
+.cgrid p,
+.cgrid address,
+.social,
+address {
+  font-family: var(--font);
+  font-variation-settings: normal;
+  font-synthesis: none;
+}
+
+.cap,
+.ghost,
+.arrow,
+.top__nav a,
+.crew .r,
+.crew .n,
+.cgrid h3,
+.issue b,
+.thanks {
+  font-weight: 700;
+}
+
+/* Titles stay Modulator. wght is stem thickness 25–500, not CSS 100–900. */
+h1, h2,
+.panel__n,
+.tier__label {
+  font-family: var(--display);
+  font-weight: 150;
+  font-variation-settings: "wght" 150;
+  font-synthesis: none;
+  letter-spacing: 0;
+}
+
+/* Real lockup: drop + original McGill Hydro Design wordmark. */
+.top__brand img {
+  height: 56px;
+  width: auto;
+}
+.top.scrolled .top__brand img {
+  height: 46px;
+}
+
+.ttl {
+  --ttl-size: clamp(2.6rem, 7vw, 6.45rem);
+  font-family: var(--display);
+  font-weight: 150;
+  font-variation-settings: "wght" 150;
+  font-synthesis: none;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  line-height: 0.9;
+}
+
+.ttl--stack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  width: 100%;
+  min-width: 0;
+}
+.ttl--stack > span {
+  display: block;
+  white-space: nowrap;
+  font-size: var(--ttl-size);
+  line-height: 0.9;
+}
+.ttl--stack > span + span {
+  margin-top: 0.18em;
+}
+
+/* One-word titles. Pixel font-size is the wrong match here: Newsletter is a
+   longer word, so at the same px it reads as a bigger title. Fit both to the
+   same width in the title column so they are the same size on the page. */
+.ttl--solo > span {
+  font-size: var(--ttl-size);
+}
+.ttl--fit {
+  container-type: inline-size;
+  width: 100%;
+}
+.ttl--fit > span {
+  /* Advance width of the word in em, so both titles land at the same measure. */
+  font-size: clamp(2.6rem, calc(78cqi / var(--word)), 9rem);
+}
+
+/* What / we do: second line a step up. */
+.ttl--lede > span:last-child {
+  font-size: clamp(3.2rem, 9.3vw, 7.6rem);
+}
+
+/* Exec / team: same size. */
+.ttl--pair > span {
+  font-weight: 250;
+  font-variation-settings: "wght" 250;
+}
+
+/* 2027 large, competitions a step down. Extra gap so the pair doesn't sit on top of each other. */
+.ttl--year > span:first-child {
+  font-weight: 350;
+  font-variation-settings: "wght" 350;
+}
+.ttl--year > span:last-child {
+  font-size: clamp(2.2rem, 5.8vw, 4.7rem);
+}
+.ttl--year > span + span {
+  margin-top: 0.5em;
+}
+
+/* Contact small, US the stamp. */
+.ttl--stamp > span:first-child {
+  font-size: clamp(2rem, 4.1vw, 3.7rem);
+}
+.ttl--stamp > span:last-child {
+  font-size: clamp(3.2rem, 7.4vw, 6.5rem);
+  font-weight: 350;
+  font-variation-settings: "wght" 350;
+}
+
+/* Hero — lockup in the middle of the dam, bigger than a caption,
+   smaller than a full-page billboard. WATER is the cyan punch. */
+.poster {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100svh;
+  padding: 6.75rem var(--pad) 4.5rem;
+}
+.poster::after {
+  background: linear-gradient(
+    180deg,
+    rgba(8, 34, 47, 0.4) 0%,
+    rgba(8, 34, 47, 0.32) 42%,
+    rgba(8, 34, 47, 0.5) 100%
+  );
+}
+.poster__in {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: max-content;
+  max-width: 100%;
+  margin-inline: 0;
+}
+.poster .ghost {
+  display: inline-block;
+  width: auto;
+  margin-top: 1.65rem;
+}
+
+.hero-lockup {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-rows: auto auto auto;
+  column-gap: clamp(0.9rem, 1.8vw, 1.4rem);
+  row-gap: 0.16em;
+  width: max-content;
+  max-width: 100%;
+  font-family: var(--display);
+  font-weight: 150;
+  font-variation-settings: "wght" 150;
+  font-synthesis: none;
+  text-transform: uppercase;
+  line-height: 0.88;
+  letter-spacing: 0;
+  --hero: clamp(3.8rem, 10.4vw, 9.25rem);
+}
+.hero-lockup__a {
+  grid-column: 1 / -1;
+  font-size: var(--hero);
+  line-height: 0.88;
+  white-space: nowrap;
+}
+.hero-lockup__b {
+  grid-column: 1;
+  display: flex;
+  align-items: center;
+  font-size: calc(var(--hero) * 0.84);
+  line-height: 0.88;
+  white-space: nowrap;
+}
+.hero-lockup__c {
+  grid-column: 1 / -1;
+  font-size: calc(var(--hero) * 1.2);
+  line-height: 0.88;
+  white-space: nowrap;
+}
+.poster h1 em {
+  margin-left: 0;
+  padding: 0;
+  -webkit-box-decoration-break: unset;
+  box-decoration-break: unset;
+}
+.hero-lockup__w {
+  grid-column: 2;
+  align-self: stretch;
+  justify-self: stretch;
+  display: flex;
+  align-items: center;
+  max-width: none;
+  margin: 0;
+  padding: 0.1em 0.22em 0.12em 0.16em;
+  font-style: normal;
+  font-size: calc(var(--hero) * 0.84);
+  line-height: 1;
+  background: var(--red);
+  color: var(--black);
+}
+
+.poster h1 {
+  margin-top: 0;
+  font-weight: 150;
+  font-size: unset;
+  line-height: 0.88;
+  letter-spacing: 0;
+}
+
+.blk h2.ttl {
+  font-size: unset;
+  line-height: 0.9;
+  letter-spacing: 0;
+  font-weight: 150;
+  width: 100%;
+  min-width: 0;
+}
+.blk h2::after { display: none; }
+
+/* Copy column: hold a readable measure instead of running the full six columns,
+   and keep it level with the top of the title rather than centred in the row. */
+.blk__body { align-self: start; }
+.blk__body p,
+.blk__body .issue,
+.cgrid p,
+.cgrid address { max-width: 34rem; }
+
+.panel h3 {
+  font-family: var(--font);
+  font-weight: 700;
+  font-variation-settings: normal;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  font-size: 1.28rem;
+}
+.panel__n {
+  font-size: 3.2rem;
+  font-weight: 150;
+  font-variation-settings: "wght" 150;
+  color: var(--red);
+}
+.tier__label {
+  font-weight: 250;
+  font-variation-settings: "wght" 250;
+}
+.thanks {
+  font-family: var(--font);
+  font-weight: 400;
+  font-variation-settings: normal;
+  letter-spacing: 0;
+}
+
+.crew .n {
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+/* ---------- light blue block sections ---------- */
+
+.blk--red { color: var(--black); }
+.blk--red .arrow { border-bottom-color: var(--black); }
+.blk--red .arrow:hover { color: var(--black); }
+.blk--red .social a { border-color: rgba(8, 34, 47, 0.55); }
+.blk--red .social a:hover { background: var(--black); color: var(--red); }
+
+.arrow { border-bottom-color: var(--ink-blue); }
+.blk--white .arrow:hover,
+.blk--off .arrow:hover { color: var(--ink-blue); }
+
+.top.scrolled { border-bottom-color: var(--red); }
+
+/* ---------- crew ---------- */
+
+.crew .r { color: var(--ink-blue); }
+.crew img { filter: none; }
+.crew .y { color: #4b5c66; }
+
+/* ---------- sponsors ---------- */
+
+.tier__slots div { border-color: rgba(8, 34, 47, 0.2); }
+.tier { border-top-color: rgba(8, 34, 47, 0.16); }
+.tier:last-child { border-bottom-color: rgba(8, 34, 47, 0.16); }
+.issue { border-color: rgba(8, 34, 47, 0.2); }
+
+/* Every tier runs the full measure so the wall reads as one column of bands.
+   Rank shows in the slot height and count, not in a ragged right edge. */
+.tier--diamond .tier__slots { grid-template-columns: repeat(2, 1fr); }
+.tier--gold .tier__slots { grid-template-columns: repeat(3, 1fr); }
+.tier--silver .tier__slots { grid-template-columns: repeat(4, 1fr); }
+.tier--bronze .tier__slots { grid-template-columns: repeat(5, 1fr); }
+.tier__slots div { aspect-ratio: auto; }
+.tier--diamond .tier__slots div { height: 100px; }
+.tier--gold .tier__slots div { height: 84px; }
+.tier--silver .tier__slots div { height: 68px; }
+.tier--bronze .tier__slots div { height: 56px; }
+
+/* Under 820 the plate becomes its own full-width band between ABOUT and
+   TREATMENT so the sentence still reads top to bottom. */
+@media (max-width: 820px) {
+  .hero-lockup {
+    grid-template-columns: minmax(0, 1fr);
+    width: 100%;
+    --hero: clamp(2.8rem, 12vw, 4rem);
+  }
+  .hero-lockup__a,
+  .hero-lockup__b,
+  .hero-lockup__c {
+    grid-column: 1;
+  }
+  .hero-lockup__w {
+    grid-column: 1;
+    width: max-content;
+    max-width: 100%;
+    justify-self: start;
+    margin: 0.06em 0 0.04em;
+    padding: 0.14em 0.55em 0.16em 0.16em;
+  }
+}
+
+@media (max-width: 900px) {
+  .tier--diamond .tier__slots,
+  .tier--gold .tier__slots,
+  .tier--silver .tier__slots,
+  .tier--bronze .tier__slots {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .ttl--stack > span { white-space: normal; }
+}
+
+/* Section arrival after a nav / CTA jump. */
+@media (prefers-reduced-motion: no-preference) {
+  .blk.is-in .ttl {
+    animation: section-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .blk.is-in .blk__body {
+    animation: section-in 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.07s both;
+  }
+  .poster.is-in .hero-lockup {
+    animation: section-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+}
+
+@keyframes section-in {
+  from {
+    opacity: 0.35;
+    transform: translateY(1.1rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

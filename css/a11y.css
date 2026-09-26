@@ -1,0 +1,81 @@
+/* Shared accessibility: focus, skip link, motion, helpers. */
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip {
+  position: absolute !important;
+  left: 12px !important;
+  top: 12px !important;
+  z-index: 400 !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  font: 600 0.95rem/1.3 system-ui, sans-serif !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  text-decoration: none;
+  color: #111 !important;
+  background: #ffd400 !important;
+  border: 0;
+}
+
+.skip:focus,
+.skip:focus-visible {
+  width: auto !important;
+  height: auto !important;
+  overflow: visible !important;
+  clip: auto !important;
+  clip-path: none !important;
+  padding: 0.7rem 1.1rem !important;
+  outline: 3px solid #111 !important;
+  outline-offset: 3px;
+  box-shadow: none !important;
+}
+
+:focus-visible {
+  outline: 3px solid #111;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 6px #ffd400;
+}
+
+/* Landmark skip target — don't draw a page-sized ring. */
+#main:focus,
+#main:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+@media (forced-colors: active) {
+  :focus-visible {
+    outline: 3px solid Highlight;
+    box-shadow: none;
+  }
+}
+
+body.nav-open { overflow: hidden; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
